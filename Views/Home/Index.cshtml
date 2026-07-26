@@ -1,0 +1,38 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Blood Donation Management System</h1>
+    <p class="lead">Manage donors, track donations, and query blood bank data.</p>
+    <hr />
+    <div class="row mt-4">
+        <div class="col-md-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">View Donors</h5>
+                    <p class="card-text">See a list of all registered blood donors.</p>
+                    <a href="/Donor" class="btn btn-primary">Go to Donors</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Add Donor</h5>
+                    <p class="card-text">Register a new blood donor into the system.</p>
+                    <a href="/Donor/Create" class="btn btn-success">Add Donor</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">LINQ Queries</h5>
+                    <p class="card-text">Run analytical queries on donor data.</p>
+                    <a href="/Donor/FilterByBloodGroup" class="btn btn-info">View Queries</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

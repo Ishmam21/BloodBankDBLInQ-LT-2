@@ -1,0 +1,15 @@
+@{
+    ViewData["Title"] = "Total Blood Volume";
+}
+
+<h2>Total Blood Volume Collected</h2>
+
+<div class="card" style="width: 25rem;">
+    <div class="card-body">
+        <h5 class="card-title">Total Volume</h5>
+        <p class="card-text" style="font-size: 2em; font-weight: bold;">
+            @ViewBag.TotalVolume mL
+        </p>
+        <p class="text-muted">Sum of VolumeMl across all donation records.</p>
+    </div>
+</div>

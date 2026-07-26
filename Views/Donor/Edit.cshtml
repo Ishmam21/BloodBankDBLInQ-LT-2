@@ -1,0 +1,91 @@
+@using task2.CustomNameEF.Tables
+@model Donor
+
+@{
+    ViewData["Title"] = "Edit Donor";
+}
+
+<h2>Edit Donor</h2>
+
+<div class="text-danger">
+    @Html.ValidationSummary(true)
+</div>
+
+<form action="/Donor/Edit/@Model.DonorId" method="post">
+    <input type="hidden" name="id" value="@Model.DonorId" />
+    <table class="table" style="width: 50%;">
+        <tr>
+            <td><label for="FullName">Full Name</label></td>
+            <td>
+                <input type="text" name="FullName" id="FullName" class="form-control" value="@Model.FullName" />
+                @if (ViewData.ModelState.ContainsKey("FullName") && ViewData.ModelState["FullName"]!.Errors.Count > 0)
+                {
+                    <span class="text-danger">@ViewData.ModelState["FullName"]!.Errors[0].ErrorMessage</span>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td><label for="BloodGroup">Blood Group</label></td>
+            <td>
+                <select name="BloodGroup" id="BloodGroup" class="form-control">
+                    <option value="">-- Select --</option>
+                    @{
+                        string[] groups = { "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-" };
+                    }
+                    @foreach (var g in groups)
+                    {
+                        if (Model.BloodGroup == g)
+                        {
+                            <option value="@g" selected>@g</option>
+                        }
+                        else
+                        {
+                            <option value="@g">@g</option>
+                        }
+                    }
+                </select>
+                @if (ViewData.ModelState.ContainsKey("BloodGroup") && ViewData.ModelState["BloodGroup"]!.Errors.Count > 0)
+                {
+                    <span class="text-danger">@ViewData.ModelState["BloodGroup"]!.Errors[0].ErrorMessage</span>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td><label for="ContactNo">Contact No</label></td>
+            <td>
+                <input type="text" name="ContactNo" id="ContactNo" class="form-control" value="@Model.ContactNo" />
+                @if (ViewData.ModelState.ContainsKey("ContactNo") && ViewData.ModelState["ContactNo"]!.Errors.Count > 0)
+                {
+                    <span class="text-danger">@ViewData.ModelState["ContactNo"]!.Errors[0].ErrorMessage</span>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td><label for="City">City</label></td>
+            <td>
+                <input type="text" name="City" id="City" class="form-control" value="@Model.City" />
+                @if (ViewData.ModelState.ContainsKey("City") && ViewData.ModelState["City"]!.Errors.Count > 0)
+                {
+                    <span class="text-danger">@ViewData.ModelState["City"]!.Errors[0].ErrorMessage</span>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td><label for="LastDonationDate">Last Donation Date</label></td>
+            <td>
+                <input type="date" name="LastDonationDate" id="LastDonationDate" class="form-control" value="@(Model.LastDonationDate.HasValue ? Model.LastDonationDate.Value.ToString("yyyy-MM-dd") : "")" />
+                @if (ViewData.ModelState.ContainsKey("LastDonationDate") && ViewData.ModelState["LastDonationDate"]!.Errors.Count > 0)
+                {
+                    <span class="text-danger">@ViewData.ModelState["LastDonationDate"]!.Errors[0].ErrorMessage</span>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+                <a href="/Donor" class="btn btn-secondary">Cancel</a>
+            </td>
+        </tr>
+    </table>
+</form>

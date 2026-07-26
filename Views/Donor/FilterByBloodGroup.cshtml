@@ -1,0 +1,73 @@
+@using task2.CustomNameEF.Tables
+@model List<Donor>
+
+@{
+    ViewData["Title"] = "Filter by Blood Group";
+    var bloodGroups = ViewBag.BloodGroups as List<string>;
+    var selected = ViewBag.SelectedBloodGroup as string;
+}
+
+<h2>Filter Donors by Blood Group</h2>
+
+<form action="/Donor/FilterByBloodGroup" method="get">
+    <div class="form-group mb-3" style="width: 300px;">
+        <label for="bloodGroup">Select Blood Group:</label>
+        <select name="bloodGroup" id="bloodGroup" class="form-control">
+            <option value="">-- Select --</option>
+            @if (bloodGroups != null)
+            {
+                @foreach (var bg in bloodGroups)
+                {
+                    if (bg == selected)
+                    {
+                        <option value="@bg" selected>@bg</option>
+                    }
+                    else
+                    {
+                        <option value="@bg">@bg</option>
+                    }
+                }
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Filter</button>
+</form>
+
+<hr />
+
+@if (!string.IsNullOrEmpty(selected))
+{
+    <h4>Donors with Blood Group: @selected</h4>
+    if (Model.Count == 0)
+    {
+        <div class="alert alert-info">No donors found with this blood group.</div>
+    }
+    else
+    {
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Full Name</th>
+                    <th>Blood Group</th>
+                    <th>Contact No</th>
+                    <th>City</th>
+                    <th>Last Donation Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var donor in Model)
+                {
+                    <tr>
+                        <td>@donor.DonorId</td>
+                        <td>@donor.FullName</td>
+                        <td>@donor.BloodGroup</td>
+                        <td>@donor.ContactNo</td>
+                        <td>@donor.City</td>
+                        <td>@(donor.LastDonationDate.HasValue ? donor.LastDonationDate.Value.ToString("yyyy-MM-dd") : "N/A")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}

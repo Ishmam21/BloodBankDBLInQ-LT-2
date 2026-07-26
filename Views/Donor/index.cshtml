@@ -1,0 +1,48 @@
+@using task2.CustomNameEF.Tables
+@model List<Donor>
+
+@{
+    ViewData["Title"] = "Donor List";
+}
+
+<h2>Donor List</h2>
+
+<p><a href="/Donor/Create" class="btn btn-primary">Add New Donor</a></p>
+
+@if (Model.Count == 0)
+{
+    <div class="alert alert-info">No donors found.</div>
+}
+else
+{
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Full Name</th>
+                <th>Blood Group</th>
+                <th>Contact No</th>
+                <th>City</th>
+                <th>Last Donation Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var donor in Model)
+            {
+                <tr>
+                    <td>@donor.DonorId</td>
+                    <td>@donor.FullName</td>
+                    <td>@donor.BloodGroup</td>
+                    <td>@donor.ContactNo</td>
+                    <td>@donor.City</td>
+                    <td>@(donor.LastDonationDate.HasValue ? donor.LastDonationDate.Value.ToString("yyyy-MM-dd") : "N/A")</td>
+                    <td>
+                        <a href="/Donor/Edit/@donor.DonorId" class="btn btn-sm btn-warning">Edit</a>
+                        <a href="/Donor/Delete/@donor.DonorId" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
