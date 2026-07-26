@@ -39,8 +39,9 @@
     </tr>
 </table>
 
-<form action="/Donor/DeleteConfirmed/@Model.DonorId" method="post">
-    <input type="hidden" name="id" value="@Model.DonorId" />
+<form action="/Donor/Delete" method="post">
+    <input type="hidden" name="Decision" value="Yes" />
+    <input type="hidden" name="DonorId" value="@Model.DonorId" />
     <button type="submit" class="btn btn-danger">Yes, Delete</button>
     <a href="/Donor" class="btn btn-secondary">Cancel</a>
 </form>

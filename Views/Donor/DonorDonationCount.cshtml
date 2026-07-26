@@ -1,5 +1,5 @@
-@using task2.Models
-@model List<DonorDonationCountViewModel>
+@using task2.CustomNameEF.Tables
+@model List<Donor>
 
 @{
     ViewData["Title"] = "Donor Donation Count";
@@ -31,7 +31,7 @@ else
                     <td>@item.FullName</td>
                     <td>@item.BloodGroup</td>
                     <td>@item.City</td>
-                    <td>@item.TotalDonations</td>
+                    <td>@item.Donations.Count</td>
                 </tr>
             }
         </tbody>

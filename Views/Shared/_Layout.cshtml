@@ -4,10 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - task2</title>
-    <script type="importmap"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/task2.styles.css" asp-append-version="true" />
 </head>
 <body>
     <header>
@@ -22,23 +20,6 @@
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="/Donor">Donors</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="/Donor/Create">Add Donor</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                LINQ Queries
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/Donor/FilterByBloodGroup">Filter by Blood Group</a></li>
-                                <li><a class="dropdown-item" href="/Donor/SortedByDate">Sorted by Last Donation Date</a></li>
-                                <li><a class="dropdown-item" href="/Donor/DonorDonationCount">Donor Donation Count</a></li>
-                                <li><a class="dropdown-item" href="/Donor/TotalVolume">Total Blood Volume</a></li>
-                            </ul>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
