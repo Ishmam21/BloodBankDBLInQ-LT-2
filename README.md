@@ -1,1 +1,1 @@
-# University Project for a Blood Bank managements system #
+# University Project for a Blood Bank management system #
